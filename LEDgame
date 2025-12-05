@@ -1,0 +1,41 @@
+#define up 0x20DF8877
+#define down 0x20DF48B7
+#define left 0x20DF8877
+#define right 0x20DF8877
+#include <IRremote.h>
+int redval = LOW;
+int greenval = LOW;
+const int RECV_PIN = 7;
+IRrecv irrecv(RECV_PIN);
+decode_results results;
+const int redPin = 9;
+const int greenPin = 10;
+
+  
+} 
+
+void setup(){
+  irrecv.enableIRIn();
+  irrecv.blink13(true);
+  pinMode(redPin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+}
+
+void loop(){
+  digitalWrite(redPin, redval);
+  digitalWrite(greenPin, greenval);
+    if (irrecv.decode(&results)){
+
+        switch(results.value){
+          case one: //Keypad button "1"
+          redval=toggle(redval);
+          }
+
+        switch(results.value){
+          case two: //Keypad button "2"
+          greenval=toggle(greenval);
+          }
+
+        irrecv.resume(); 
+    }
+}//*/
