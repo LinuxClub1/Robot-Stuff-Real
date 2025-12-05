@@ -1,5 +1,5 @@
-#define one 20DF8877
-#define two 20DF48B7
+#define one 0x20DF8877
+#define two 0x20DF48B7
 
 #include <IRremote.h>
 
