@@ -1,7 +1,7 @@
-#define up 0x20DF8877
-#define down 0x20DF48B7
-#define left 0x20DF8877
-#define right 0x20DF8877
+#define up 0x20DFA25D
+#define down 0x20DF629D
+#define left 0x20DF12ED
+#define right 0x20DFE21D
 #include <IRremote.h>
 int redval = LOW;
 int greenval = LOW;
