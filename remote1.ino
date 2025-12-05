@@ -1,10 +1,11 @@
+
 #include <IRremote.h>
 
 const int RECV_PIN = 7;
 IRrecv irrecv(RECV_PIN);
 decode_results results;
-const int redPin = 10;
-const int greenPin = 11;
+const int redPin = 11;
+const int greenPin = 10;
 
 
 void setup(){
@@ -18,14 +19,14 @@ void loop(){
     if (irrecv.decode(&results)){
 
         switch(results.value){
-          case 0xFF38C7: //Keypad button "5"
+          case 0xFF906F: //Keypad button "5"
           digitalWrite(redPin, HIGH);
           delay(2000);
           digitalWrite(redPin, LOW);
           }
 
         switch(results.value){
-          case 0xFF18E7: //Keypad button "2"
+          case 0xFFE01F: //Keypad button "2"
           digitalWrite(greenPin, HIGH);
           delay(2000);
           digitalWrite(greenPin, LOW);
@@ -33,4 +34,4 @@ void loop(){
 
         irrecv.resume(); 
     }
-}
+}//*/
