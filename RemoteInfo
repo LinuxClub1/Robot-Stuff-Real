@@ -1,0 +1,15 @@
+#define input 0X20DFF40B
+#define power 0X20DF10EF
+#define vudu 0X20DF37CB
+#define netflix 0X20DFD728
+#define primevideo 0X20DF57A8
+#define xumo 0X20DFF609
+#define hulu 0X20DF9F60
+#define redbox 0X20DF42BD
+#define menu 0X20DFF20D
+#define watchfree 0X20DFEF10
+#define info 0X20DFD827
+#define up 0X20DFA25D
+#define down 0X20DF629D
+#define left 0X20DFE21D
+#define right 0X20DF12ED
