@@ -21,14 +21,14 @@ void loop(){
     if (irrecv.decode(&results)){
 
         switch(results.value){
-          case 0xFF906F: //Keypad button "5"
+          case one: //Keypad button "5"
           digitalWrite(redPin, HIGH);
           delay(2000);
           digitalWrite(redPin, LOW);
           }
 
         switch(results.value){
-          case 0xFFE01F: //Keypad button "2"
+          case two: //Keypad button "2"
           digitalWrite(greenPin, HIGH);
           delay(2000);
           digitalWrite(greenPin, LOW);
