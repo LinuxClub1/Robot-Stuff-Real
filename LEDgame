@@ -1,41 +1,94 @@
-#define up 0x20DFA25D
-#define down 0x20DF629D
-#define left 0x20DF12ED
-#define right 0x20DFE21D
+
+#define up 0X20DFA25D
+#define down 0X20DF629D
+#define left 0X20DFE21D
+#define right 0X20DF12ED
 #include <IRremote.h>
 int redval = LOW;
 int greenval = LOW;
 const int RECV_PIN = 7;
 IRrecv irrecv(RECV_PIN);
 decode_results results;
-const int redPin = 9;
-const int greenPin = 10;
+const int NegTwo = 9;
+const int NegOne = 10;
+const int Zero = 11;
+const int One = 12;
+const int Two = 6;
+int Pos = 0;
 
   
-} 
+ 
 
 void setup(){
   irrecv.enableIRIn();
   irrecv.blink13(true);
-  pinMode(redPin, OUTPUT);
-  pinMode(greenPin, OUTPUT);
+  pinMode( NegTwo, OUTPUT);
+  pinMode( NegOne, OUTPUT);
+  pinMode( Zero, OUTPUT);
+  pinMode( One, OUTPUT);
+  pinMode( Two, OUTPUT);
 }
 
 void loop(){
-  digitalWrite(redPin, redval);
-  digitalWrite(greenPin, greenval);
-    if (irrecv.decode(&results)){
+  if (irrecv.decode(&results)){
+    switch(results.value){
+      
+      case up:
+        Pos++;
+        break;
+      case down:
+        Pos--;
+        break;
+      case right:
+        Pos-=2;
+        break;
+      case left:
+        Pos+=2;
+        break;
+      default:
+        break;
 
-        switch(results.value){
-          case one: //Keypad button "1"
-          redval=toggle(redval);
-          }
+    } 
+     irrecv.resume();   
+  }
+  Serial.print("Pos=");
+  Serial.print(Pos);
+  if (Pos == 2){
+    digitalWrite(Two, HIGH);
+    digitalWrite(One, LOW);
+    digitalWrite(Zero, LOW);
+    digitalWrite(NegOne, LOW);
+    digitalWrite(NegTwo, LOW);
+  }
+  else if (Pos == 1){
+    digitalWrite(Two, LOW);
+    digitalWrite(One, HIGH);
+    digitalWrite(Zero, LOW);
+    digitalWrite(NegOne, LOW);
+    digitalWrite(NegTwo, LOW);
+  }
+  else if (Pos == 0){
+    digitalWrite(Two, LOW);
+    digitalWrite(One, LOW);
+    digitalWrite(Zero, HIGH);
+    digitalWrite(NegOne, LOW);
+    digitalWrite(NegTwo, LOW);
+  }
+  else if (Pos == -1){
+    digitalWrite(Two, LOW);
+    digitalWrite(One, LOW);
+    digitalWrite(Zero, LOW);
+    digitalWrite(NegOne, HIGH);
+    digitalWrite(NegTwo, LOW);
+  }
+  
+  else{
+    digitalWrite(Two, LOW);
+    digitalWrite(One, LOW);
+    digitalWrite(Zero, LOW);
+    digitalWrite(NegOne, LOW);
+    digitalWrite(NegTwo, HIGH);
+      }
 
-        switch(results.value){
-          case two: //Keypad button "2"
-          greenval=toggle(greenval);
-          }
-
-        irrecv.resume(); 
-    }
+      
 }//*/
