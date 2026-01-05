@@ -1,4 +1,3 @@
-
 #define up 0X20DFA25D
 #define down 0X20DF629D
 #define left 0X20DFE21D
@@ -34,15 +33,31 @@ void loop(){
     switch(results.value){
       
       case up:
+        if (Pos==1){Pos+=0;}
+        else if (Pos==-2){Pos+=0;}
+        else if (Pos==2){Pos+=0;}
+        else 
         Pos++;
         break;
       case down:
+        if (Pos==-1){Pos+=0;}
+        else if (Pos==-2){Pos+=0;}
+        else if (Pos==2){Pos+=0;}
+        else
         Pos--;
         break;
       case right:
+         if (Pos==-2){Pos+=0;}
+        else if (Pos==-1){Pos+=0;}
+        else if (Pos==1){Pos+=0;}
+        else
         Pos-=2;
         break;
       case left:
+        if (Pos==2){Pos+=0;}
+        else if (Pos==-1){Pos+=0;}
+        else if (Pos==1){Pos+=0;}
+        else
         Pos+=2;
         break;
       default:
